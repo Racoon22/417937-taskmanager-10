@@ -30,7 +30,7 @@ const createMenuTemplate = () => {
             >STATISTICS</label
           >
         </section>`
-  )
+  );
 };
 
 const createFilterTemplate = () => {
@@ -103,7 +103,7 @@ const createFilterTemplate = () => {
           >Archive <span class="filter__archive-count">115</span></label
         >
   </section>`
-  )
+  );
 };
 
 const createBoardTemplate = () => {
@@ -116,7 +116,7 @@ const createBoardTemplate = () => {
         </div>
         <div class="board__tasks"></div>
       </section>`
-  )
+  );
 };
 
 const createTaskTemplate = () => {
@@ -186,7 +186,7 @@ const createTaskTemplate = () => {
               </div>
             </div>
      </article>`
-  )
+  );
 };
 
 const createEditTaskTemplate = () => {
@@ -446,16 +446,16 @@ const createEditTaskTemplate = () => {
               </div>
             </form>
           </article>`
-  )
+  );
 };
 
 const createLoadMoreButtonTemplate = () => {
   return (
     `<button class="load-more" type="button">load more</button>`
-  )
+  );
 };
 
-const render = (container, template, place = 'beforeend') => {
+const render = (container, template, place = `beforeend`) => {
   container.insertAdjacentHTML(place, template);
 };
 
