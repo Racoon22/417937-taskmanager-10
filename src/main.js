@@ -1,7 +1,6 @@
 import {createMenuTemplate} from './components/menu';
 import {createFilterTemplate} from './components/filter';
 import {createBoardTemplate} from './components/board';
-import {createSortingTemplate} from "./components/sorting";
 
 import {createTaskTemplate} from './components/task';
 import {createTaskEditTemplate} from './components/task-edit';
