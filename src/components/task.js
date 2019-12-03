@@ -11,7 +11,7 @@ const createHashtagMarkup = (hashtags) => {
         </span>
       </span>`
     );
-  }).join(`\n`)
+  }).join(`\n`);
 };
 
 const createTaskTemplate = (task) => {

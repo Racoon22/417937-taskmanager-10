@@ -14,7 +14,7 @@ const createColorMarkups = (colors, currentColor) => {
      <label
        for="color-black-4"
        class="card__color card__color--${color}"
-       >${color}</label>`)
+       >${color}</label>`);
   }).join(`\n`);
 };
 
@@ -31,7 +31,7 @@ const createRepeatingDaysMarkup = (days, repeatingDays) => {
          ${isChecked ? `checked` : ``}
        />
        <label class="card__repeat-day" for="repeat-${day}-4">${day}</label>`
-    )
+    );
   }).join(`\n`);
 };
 
@@ -52,7 +52,7 @@ const createHashtagsMarkup = (hastags) => {
         delete
       </button>
     </span>`
-    )
+    );
   }).join(`\n`);
 };
 export const createTaskEditTemplate = (task) => {

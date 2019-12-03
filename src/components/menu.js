@@ -38,7 +38,7 @@ export default class SiteMenu {
     this._element = null;
   }
 
-  getTemplate() {;
+  getTemplate() {
     return createSiteMenuTemplate();
   }
 

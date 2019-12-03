@@ -36,7 +36,7 @@ const getRandomArrayItem = (array) => {
 };
 
 const getRandomDate = () => {
-  const targetDate = new Date;
+  const targetDate = new Date();
   const sing = Math.random() > 0.5 ? 1 : -1;
   const diffValue = sing * getRandomInteger(0, 7);
 
@@ -58,7 +58,7 @@ const generateRepeatingDays = () => {
 };
 
 const generateTags = (tags) => {
-  return tags.filter(() => Math.random() > 0.5).slice(0, 3)
+  return tags.filter(() => Math.random() > 0.5).slice(0, 3);
 };
 
 const generateTask = () => {

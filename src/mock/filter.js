@@ -40,7 +40,7 @@ const generateFilters = (tasks) => {
         return task.isArchived ? ++reducer : reducer;
       }, 0)
     },
-  ]
+  ];
 };
 
 export {generateFilters};
