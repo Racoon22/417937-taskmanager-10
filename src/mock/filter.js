@@ -25,13 +25,8 @@ const generateFilters = (tasks) => {
     },
     {
       title: `repeating`,
-      count: tasks.reduce((reducer, task) => {
-        let days = Object.values(task.repeatingDays);
-        if (days.indexOf(true) > -1) {
-          ++reducer;
-        }
-        return reducer;
-      }, 0)
+      count: tasks.reduce((reducer, {repeatingDays}) =>
+        Object.keys(repeatingDays).some((day) => repeatingDays[day]) ? reducer + 1 : reducer, 0)
     },
     {
       title: `tags`,
