@@ -18,7 +18,6 @@ const renderTask = (task) => {
   const taskEditComponent = new TaskEditComponent(task);
 
   const editButton = taskComponent.getElement().querySelector('.card__btn--edit');
-
   editButton.addEventListener(`click`, function () {
     taskListElement.replaceChild(taskEditComponent.getElement(), taskComponent.getElement())
   });
@@ -52,9 +51,9 @@ tasks.slice(0, showingTaskCount).forEach((task) => {
 });
 
 const boardElement = siteMainElement.querySelector(`.board`);
-render(boardElement, new LoadMoreButtonComponent().getElement(), RenderPosition.BEFOREBEGIN);
-
 const loadMoreButtonComponent = new LoadMoreButtonComponent();
+render(boardElement, loadMoreButtonComponent.getElement(), RenderPosition.BEFOREBEGIN);
+
 loadMoreButtonComponent.getElement().addEventListener(`click`, () => {
   let prevTackCount = showingTaskCount;
   showingTaskCount += SHOWING_TASKS_COUNT_BY_BUTTON;
