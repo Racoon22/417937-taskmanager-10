@@ -7,7 +7,7 @@ const createTasksTemplate = () => {
 };
 
 
-export default class Tasks extends AbstractComponent{
+export default class Tasks extends AbstractComponent {
   getTemplate() {
     return createTasksTemplate();
   }

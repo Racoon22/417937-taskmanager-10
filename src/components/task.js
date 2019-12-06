@@ -82,7 +82,7 @@ const createTaskTemplate = (task) => {
   );
 };
 
-export default class Task extends AbstractComponent{
+export default class Task extends AbstractComponent {
   constructor(task) {
     super();
     this._task = task;

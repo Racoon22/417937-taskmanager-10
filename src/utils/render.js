@@ -4,7 +4,7 @@ export const RenderPosition = {
 };
 
 export const createElement = (template) => {
-  const newElement = document.createElement('div');
+  const newElement = document.createElement(`div`);
   newElement.innerHTML = template;
   return newElement.firstChild;
 };
@@ -15,7 +15,7 @@ export const render = (container, element, place) => {
       container.prepend(element.getElement());
       break;
     default:
-      container.append(element.getElement())
+      container.append(element.getElement());
   }
 };
 
