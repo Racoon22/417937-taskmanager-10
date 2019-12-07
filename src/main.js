@@ -7,7 +7,7 @@ import {generateTasks} from "./mock/task";
 import {generateFilters} from "./mock/filter";
 import {render, RenderPosition} from "./utils/render";
 
-const TASK_COUNT = 22;
+const TASK_COUNT = 100;
 
 const siteMainElement = document.querySelector(`.main`);
 const siteHeaderElement = document.querySelector(`.main__control`);
