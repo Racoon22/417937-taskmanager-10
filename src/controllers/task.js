@@ -61,15 +61,16 @@ export default class TaskController {
   }
 
   _replaceEditToTask() {
-    this._onViewChange();
-    replace(this._taskEditComponent, this._taskComponent);
-    this._mode = Mode.EDIT;
-  }
-
-  _replaceTaskToEdit() {
     this._taskComponent.reset();
     replace(this._taskComponent, this._taskEditComponent);
     this._mode = Mode.DEFAULT;
+  }
+
+  _replaceTaskToEdit() {
+    this._onViewChange();
+
+    replace(this._taskEditComponent, this._taskComponent);
+    this._mode = Mode.EDIT;
   }
 
   _onEscPressDown(evt) {
