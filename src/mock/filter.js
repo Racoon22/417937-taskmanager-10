@@ -37,7 +37,7 @@ const generateFilters = (tasks) => {
     {
       title: `archive`,
       count: tasks.reduce((reducer, task) => {
-        return task.isArchived ? ++reducer : reducer;
+        return task.isArchive ? ++reducer : reducer;
       }, 0)
     },
   ];
