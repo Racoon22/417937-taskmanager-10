@@ -116,45 +116,5 @@ export default class boardController {
     }
 
   }
-
-
-  // renderTasks(taskListElement, tasks.slice(0, showingTasksCount));
-  // renderLoadMoreButton();
-  //
-  // this._sortComponent.setSortTypeChangeHandler((sortType) => {
-  //     let sortedTasks = [];
-  //
-  //     switch (sortType) {
-  //       case SORT_TYPE.DATE_UP :
-  //         sortedTasks = tasks.slice().sort((a, b) => a.dueDate - b.dueDate);
-  //         break;
-  //       case SORT_TYPE.DATE_DOWN :
-  //         sortedTasks = tasks.slice().sort((a, b) => b.dueDate - a.dueDate);
-  //         break;
-  //       default :
-  //         sortedTasks = tasks.slice(0, showingTasksCount);
-  //         break;
-  //     }
-  //
-  //     taskListElement.innerHTML = ``;
-  //     renderTasks(taskListElement, sortedTasks);
-  //     if (sortType === SORT_TYPE.DATE_DEFAULT) {
-  //       renderLoadMoreButton();
-  //     } else {
-  //       remove(this._loadMoreButtonComponent);
-  //     }
-  //   }
-  // );
-  //
-  // this._loadMoreButtonComponent.setClickHandler(() => {
-  //   let prevTackCount = showingTasksCount;
-  //   showingTasksCount += SHOWING_TASKS_COUNT_BY_BUTTON;
-  //   tasks.slice(prevTackCount, showingTasksCount)
-  //     .forEach((task) => renderTasks(taskListElement, task), RenderPosition.BEFOREBEGIN);
-  //
-  //   if (showingTasksCount >= tasks.length) {
-  //     remove(this._loadMoreButtonComponent);
-  //   }
-  // });
 }
 

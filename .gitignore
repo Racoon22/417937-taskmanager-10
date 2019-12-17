@@ -15,3 +15,4 @@ node_modules/
 build/
 public/bundle.js
 public/bundle.min.js
+public/bundle.map.js

@@ -61,7 +61,7 @@ export default class TaskController {
   }
 
   _replaceEditToTask() {
-    this._taskComponent.reset();
+    this._taskEditComponent.reset();
     replace(this._taskComponent, this._taskEditComponent);
     this._mode = Mode.DEFAULT;
   }
