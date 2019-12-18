@@ -171,7 +171,7 @@ export default class TaskEdit extends AbstractSmartComponent {
     this._activeRepeatingDays = Object.assign({}, task.repeatingDays);
     this._flatpikr = null;
 
-    this._applyFlatpikr();
+    this._applayFlatpikr();
     this._subscribeOnEvents();
   }
 
@@ -184,7 +184,6 @@ export default class TaskEdit extends AbstractSmartComponent {
   }
 
   recoveryListeners() {
-    this._rerender();
     this._applayFlatpikr();
   }
 
@@ -198,7 +197,7 @@ export default class TaskEdit extends AbstractSmartComponent {
     this.rerender();
   }
 
-  _applyFlatpikr() {
+  _applayFlatpikr() {
     if (this._flatpikr) {
       this._flatpikr.destroy();
       this._flatpikr = null;
