@@ -23,7 +23,7 @@ const createButtonMarkup = (name, isActive) => {
 };
 
 const createTaskTemplate = (task) => {
-  const {description : notSanitizedDescription, tags, dueDate, color, repeatingDays} = task;
+  const {description: notSanitizedDescription, tags, dueDate, color, repeatingDays} = task;
   const isExpired = dueDate instanceof Date && isOverdueDate(dueDate, new Date());
   const isDateShowing = !!dueDate;
 
@@ -97,7 +97,7 @@ export default class Task extends AbstractComponent {
     this.getElement().querySelector(`.card__btn--edit`).addEventListener(`click`, handler);
   }
 
-  setFavoriteButtonClickHandler(handler) {
+  setFavoritesButtonClickHandler(handler) {
     this.getElement().querySelector(`.card__btn--favorites`)
       .addEventListener(`click`, handler);
   }
