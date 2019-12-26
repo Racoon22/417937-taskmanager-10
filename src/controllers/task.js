@@ -1,11 +1,32 @@
 import TaskComponent from "../components/task";
 import TaskEditComponent from "../components/task-edit";
-import {render, replace, RenderPosition} from "../utils/render";
+import {render, replace, RenderPosition, remove} from "../utils/render";
+import {COLORS} from '../const'
 
-const Mode = {
+export const Mode = {
+  ADDING: `adding`,
   DEFAULT: `default`,
   EDIT: `edit`,
 };
+
+export const EmptyTask = {
+  description: ``,
+  dueDate: null,
+  repeatingDays: {
+    'mo': false,
+    'tu': false,
+    'we': false,
+    'th': false,
+    'fr': false,
+    'sa': false,
+    'su': false,
+  },
+  tags: [],
+  color: COLORS.BLACK,
+  isFavorite: false,
+  isArchive: false,
+};
+
 
 export default class TaskController {
   constructor(container, onDataChange, onViewChange) {
@@ -17,40 +38,58 @@ export default class TaskController {
     this._taskComponent = null;
     this._taskEditComponent = null;
 
-    this._onEscPressDown = this._onEscPressDown.bind(this);
+    this._onEscKeyDown = this._onEscKeyDown.bind(this);
   }
 
-  render(task) {
+  render(task, mode) {
     const oldTaskComponent = this._taskComponent;
     const oldTaskEditComponent = this._taskEditComponent;
+    this._mode = mode;
 
     this._taskComponent = new TaskComponent(task);
     this._taskEditComponent = new TaskEditComponent(task);
 
     this._taskComponent.setEditButtonClickHandler(() => {
       this._replaceTaskToEdit();
-      document.addEventListener(`keydown`, this._onEscPressDown);
+      document.addEventListener(`keydown`, this._onEscKeyDown);
     });
 
     this._taskComponent.setArchiveButtonClickHandler(() => {
       this._onDataChange(this, task, Object.assign({}, task, {isArchive: !task.isArchive}));
-      document.addEventListener(`keydown`, this._onEscPressDown);
+      document.addEventListener(`keydown`, this._onEscKeyDown);
     });
 
     this._taskComponent.setFavoriteButtonClickHandler(() => {
       this._onDataChange(this, task, Object.assign({}, task, {isFavorite: !task.isFavorite}));
-      document.addEventListener(`keydown`, this._onEscPressDown);
+      document.addEventListener(`keydown`, this._onEscKeyDown);
     });
 
-    this._taskEditComponent.setSubmitHandler(() => {
-      this._replaceEditToTask();
+    this._taskEditComponent.setSubmitHandler((evt) => {
+      evt.preventDefault();
+      const data = this._taskEditComponent.getData();
+      this._onDataChange(this, task, data);
     });
 
-    if (oldTaskComponent && oldTaskEditComponent) {
-      replace(this._taskComponent, oldTaskComponent);
-      replace(this._taskEditComponent, oldTaskEditComponent);
-    } else {
-      render(this._container, this._taskComponent, RenderPosition.BEFOREBEGIN);
+    this._taskEditComponent.setDeleteButtonClickHandler(() => this._onDataChange(this, task, null));
+
+    switch (mode) {
+      case Mode.DEFAULT:
+        if (oldTaskEditComponent && oldTaskComponent) {
+          replace(this._taskComponent, oldTaskComponent);
+          replace(this._taskEditComponent, oldTaskEditComponent);
+          this._replaceEditToTask();
+        } else {
+          render(this._container, this._taskComponent, RenderPosition.BEFOREEND);
+        }
+        break;
+      case Mode.ADDING:
+        if (oldTaskEditComponent && oldTaskComponent) {
+          remove(oldTaskComponent);
+          remove(oldTaskEditComponent);
+        }
+        document.addEventListener(`keydown`, this._onEscKeyDown);
+        render(this._container, this._taskEditComponent, RenderPosition.AFTERBEGIN);
+        break;
     }
   }
 
@@ -60,8 +99,15 @@ export default class TaskController {
     }
   }
 
+  destroy() {
+    remove(this._taskEditComponent);
+    remove(this._taskComponent);
+    document.removeEventListener(`keydown`, this._onEscKeyDown);
+  }
+
   _replaceEditToTask() {
     this._taskEditComponent.reset();
+    document.removeEventListener(`keydown`, this._onEscKeyDown);
     replace(this._taskComponent, this._taskEditComponent);
     this._mode = Mode.DEFAULT;
   }
@@ -73,10 +119,13 @@ export default class TaskController {
     this._mode = Mode.EDIT;
   }
 
-  _onEscPressDown(evt) {
+  _onEscKeyDown(evt) {
     if (evt.key === `Escape` || evt.key === `Esc`) {
+      if (this._mode === Mode.ADDING) {
+        this._onDataChange(this, EmptyTask, null);
+      }
       this._replaceEditToTask();
-      document.removeEventListener(`keydown`, this._onEscPressDown);
+      document.removeEventListener(`keydown`, this._onEscKeyDown);
     }
   }
 }
