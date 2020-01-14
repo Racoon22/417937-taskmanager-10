@@ -316,7 +316,7 @@ export default class Statistics extends AbstractSmartComponent {
     this._applyFlatpickr(this.getElement().querySelector(`.statistic__period-input`));
 
     this._renderCharts();
-  };
+  }
 
   getTemplate() {
     return createStatisticsTemplate({tasks: this._tasks.getTasks(), dateFrom: this._dateFrom, dateTo: this._dateTo});
@@ -379,7 +379,8 @@ export default class Statistics extends AbstractSmartComponent {
     this.rerender(this._tasks, this._dateFrom, this._dateTo);
   }
 
-  recoveryListeners() {}
+  recoveryListeners() {
+  }
 
   rerender(tasks, dateFrom, dateTo) {
     this._tasks = tasks;
