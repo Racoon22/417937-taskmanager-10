@@ -1,4 +1,4 @@
-import AbstractComponent from './abstract-component.js';
+import AbstractSmartComponent from './abstract-smart-component.js';
 import Chart from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import moment from 'moment';
@@ -300,7 +300,7 @@ const createStatisticsTemplate = ({tasks, dateFrom, dateTo}) => {
   );
 };
 
-export default class Statistics extends AbstractComponent {
+export default class Statistics extends AbstractSmartComponent {
 
   constructor({tasks, dateFrom, dateTo}) {
     super();
