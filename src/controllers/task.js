@@ -190,4 +190,5 @@ export default class TaskController {
       this._replaceEditToTask();
     }
   }
+
 }
